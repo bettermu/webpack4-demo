@@ -166,7 +166,7 @@ export default {
 
 ```
 
-*然后再运行 npm run dev 访问dist目录下的a.html，就可以看到完成后的效果啦~~
+* 然后再运行 npm run dev 访问dist目录下的a.html，就可以看到完成后的效果啦~~
 
 
 
