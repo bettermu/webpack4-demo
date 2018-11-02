@@ -55,14 +55,11 @@ const config = {
         }, )
       }, //带css的css编译
       {
-        test: /\.scss/,
-        use: ExtractTextWebpackPlugin.extract({
-          fallback: "style-loader",
-          use: ['css-loader', 'sass-loader']
-        }, )
-      }, //带scss的css编译
-      {
         test: /\.less/,
+        //内联配置
+        //use:['style-loader','css-loader','less-loader']
+
+        //分离配置
         use: ExtractTextWebpackPlugin.extract({
           fallback: "style-loader",
           use: ['css-loader', 'less-loader']

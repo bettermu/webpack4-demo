@@ -1,3 +1,3 @@
-require('./a.css')
+require('./a.less')
 
 document.write('aaaaa')
