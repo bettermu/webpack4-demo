@@ -47,6 +47,13 @@ const config = {
   module: {
 
     rules: [
+      {
+        test:/.vue$/,
+        use:{
+          loader:'vue-loader',
+          options:{}
+        }
+      },
 
       {
         test: /\.css/,
@@ -113,6 +120,12 @@ const config = {
 
 
   },
+
+  resolve:{
+    alias:{
+      'vue$':'vue/dist/vue.esm.js'
+    }
+  }
 
 }
 

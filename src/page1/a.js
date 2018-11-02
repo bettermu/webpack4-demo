@@ -1,6 +1,12 @@
 //require('./a.less')
 
 import './a.less'
+import Vue from 'vue'
+import a1 from './components/a1.vue'
+
+new Vue({
+  render:h=> h(a1)
+}).$mount('#app')
 
 require('jquery')
 
