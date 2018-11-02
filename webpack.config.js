@@ -96,6 +96,18 @@ const config = {
         }
       },
 
+      //暴露$和jquery到全局
+      {
+        test:require.resolve('jquery'),//require.resolve 用来获取模块的绝对路径
+        use:[{
+          loader:'expose-loader',
+          options:'jQuery'
+        },{
+          loader:'expose-loader',
+          options:'$'
+        }]
+      }
+
 
     ],
 

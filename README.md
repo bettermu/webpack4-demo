@@ -32,4 +32,38 @@ npm install -D extract-text-webpack-plugin@next
 ```
 
 
+## 如何全局引入jquery
+
+* 首先安装加载器expose-loader和jquery:
+```
+npm i expose-loader jquery --save
+```
+
+* 然后，在webpack.config.js里的modules.rules里加入下面代码
+
+```js
+rules: [
+        	//暴露$和jQuery到全局
+	        {
+	            test: require.resolve('jquery'), //require.resolve 用来获取模块的绝对路径
+	            use: [{
+	                loader: 'expose-loader',
+	                options: 'jQuery'
+	            }, {
+	                loader: 'expose-loader',
+	                options: '$'
+	            }]
+	        }
+        ]
+```
+
+* 接下来就可以在每个页面的js模块里引入了：
+```js
+//a.js
+
+require('jquery')
+
+$('.wrap').addClass('hhhh')
+
+```
 
