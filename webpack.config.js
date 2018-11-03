@@ -91,17 +91,17 @@ const config = {
           }
         }
       }, //如果有png格式的图片，超过4M直接转化为base64格式
-      {
-        test: /\.html$/,
-        use: {
-          loader: 'html-loader',
-          options: { //打包html文件
-            minimize: true, //是否打包为最小值
-            removeComments: true, //是否移除注释
-            collapseWhitespace: true, //是否合并空格
-          }
-        }
-      },
+      //{
+      //  test: /\.html$/,
+      //  use: {
+      //    loader: 'html-loader',
+      //    options: { //打包html文件
+      //      minimize: true, //是否打包为最小值
+      //      removeComments: true, //是否移除注释
+      //      collapseWhitespace: true, //是否合并空格
+      //    }
+      //  }
+      //},
 
       //暴露$和jquery到全局
       {

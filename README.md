@@ -2,6 +2,14 @@
 # 基于webpack4 构建的 多页面 demo
 
 
+## 介绍
+
+* webpack4结构配置
+* 引入jquery
+* 引入vue
+* 配置 webpack-dev-server
+
+
 ## 安装依赖
 
 
@@ -219,6 +227,34 @@ npm run dev
 效果如下：   
 
 ![](https://github.com/bettermu/blog-picture-store/blob/master/20181103-webpack4-demo/4.png?raw=true)
+
+
+
+## 问题记录
+
+### 关于在htmlWebpackPlugin中配置的title属性未生效的问题
+
+```js
+new HtmlWebpackPlugin({
+      title: '页面一', //标题
+      filename: './a/a.html', //文件目录名
+      template: './src/page1/a.html', //文件模板目录
+      hash: true, //是否添加hash值
+      chunks: ['a'], //模板所引用的js块
+    }),
+```
+
+我在a页面的配置里加上了title的配置，同样在a.html里加入了：
+```html
+<title><%= htmlWebpackPlugin.options.title %></title>
+```
+
+这里需要注意，htmlWebpackPlugin不能写成HtmlWebpackPlugin。  
+
+发现配置未生效，结果页面的title显示是<%= htmlWebpackPlugin.options.title %>，后来找到了原因，需要把webpack.config.js里的html-loader给注释掉：
+
+![](https://github.com/bettermu/blog-picture-store/blob/master/20181103-webpack4-demo/5.png?raw=true)
+
 
 
 
