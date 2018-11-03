@@ -125,6 +125,16 @@ const config = {
     alias:{
       'vue$':'vue/dist/vue.esm.js'
     }
+  },
+
+  //起本地服务
+  devServer:{
+    //目录
+    contentBase:"./dist/",
+    historyApiFallback:true,
+    inline:true,
+    hot:true,
+    host:'127.0.0.1'
   }
 
 }
