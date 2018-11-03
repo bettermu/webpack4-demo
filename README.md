@@ -299,7 +299,9 @@ a.less
 
 如果指定了publicPath，则路径会变成 path.join(publicPath, name)，这里会忽略掉outputPath，那么这里我们只需要添加  publicPath:'../assets/'  即可
 
-重新运行打包，就能看到效果了
+重新运行打包，就能看到效果了，可以看到图片已经正确引入了：
+
+![](https://github.com/bettermu/blog-picture-store/blob/master/20181103-webpack4-demo/11.png?raw=true)
 
 
 
