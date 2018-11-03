@@ -1,6 +1,7 @@
 
 # 基于webpack4 构建的 多页面 demo
 
+
 ## 安装依赖
 
 
@@ -167,6 +168,60 @@ export default {
 ```
 
 * 然后再运行 npm run dev 访问dist目录下的a.html，就可以看到完成后的效果啦~~
+
+![](https://github.com/bettermu/blog-picture-store/blob/master/20181103-webpack4-demo/2.png?raw=true)
+
+
+## 重新整理本地环境，引入webpack-dev-server进行开发环境热更新
+
+其实上面的代码有不妥的地方，就是package.json的scripts里只配置了一条生产环境打包的脚本执行：
+
+![](https://github.com/bettermu/blog-picture-store/blob/master/20181103-webpack4-demo/1.png?raw=true)
+
+其实这样对于开发来讲，并不友好，我们急切需要一个能够在开发环境，于是，首先，我们全局安装下webpack-dev-server：
+
+```
+npm install webpack-dev-server -g
+```
+
+然后，在webpack.config.js文件里，加入devServer模块：
+
+```js
+//起本地服务
+  devServer:{
+    //目录
+    contentBase:"./dist/",
+    historyApiFallback:true,
+    inline:true,
+    hot:true,
+    host:'127.0.0.1'  //服务地址
+  }
+```
+
+接下来，在package.json文件里的scripts里加入：
+
+```js
+"dev":"webpack-dev-server --mode development --inline --hot --watch"
+```
+
+如图：  
+
+![](https://github.com/bettermu/blog-picture-store/blob/master/20181103-webpack4-demo/3.png?raw=true)
+
+然后，我们在命令行里输入：
+
+```
+npm run dev
+```
+
+然后，打开浏览器，输入：http://localhost:8080/a/a.html （这里需要注意，我们在devServer里配置的目录是dist下面的，因此，访问的时候，后面直接加dist下面的目录就好，无需再加前缀dist）
+
+效果如下：   
+
+![](https://github.com/bettermu/blog-picture-store/blob/master/20181103-webpack4-demo/4.png?raw=true)
+
+
+
 
 
 
