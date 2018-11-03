@@ -260,7 +260,8 @@ new HtmlWebpackPlugin({
 
 ### 关于图片的正确引入
 
-开发目录如下
+开发目录如下  
+
 ![](https://github.com/bettermu/blog-picture-store/blob/master/20181103-webpack4-demo/7.png?raw=true)
 
 打包后的目录如下
