@@ -8,6 +8,7 @@
 * 引入jquery
 * 引入vue
 * 配置 webpack-dev-server
+* 图片正确引入
 
 
 ## 安装依赖
