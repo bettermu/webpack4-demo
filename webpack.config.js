@@ -55,12 +55,12 @@ const config = {
         }
       },
 
-      {
-        test: /\.css/,
-        use: ExtractTextWebpackPlugin.extract({
-          use: ['css-loader']
-        }, )
-      }, //带css的css编译
+      //{
+      //  test: /\.css/,
+      //  use: ExtractTextWebpackPlugin.extract({
+      //    use: ['css-loader']
+      //  }, )
+      //}, //带css的css编译
       {
         test: /\.less/,
         //内联配置
@@ -77,7 +77,8 @@ const config = {
         use: [{
           loader: 'file-loader',
           options: {
-            outputPath: 'assets/'
+            outputPath: 'assets/',
+            publicPath:'../assets/'
           }
         }]
       }, //图片和字体加载

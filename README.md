@@ -257,6 +257,59 @@ new HtmlWebpackPlugin({
 
 
 
+### 关于图片的正确引入
+
+开发目录如下
+![](https://github.com/bettermu/blog-picture-store/blob/master/20181103-webpack4-demo/7.png?raw=true)
+
+打包后的目录如下
+
+![](https://github.com/bettermu/blog-picture-store/blob/master/20181103-webpack4-demo/8.png?raw=true)
+
+a.html
+
+![](https://github.com/bettermu/blog-picture-store/blob/master/20181103-webpack4-demo/6.png?raw=true)
+
+a.less
+
+![](https://github.com/bettermu/blog-picture-store/blob/master/20181103-webpack4-demo/9.png?raw=true)
+
+
+
+由于html文件是通过html-wepback-plugin生成的，如果希望webpack能够正确处理打包之后图片的引用路径，需要在模板文件中这样引用图片。
+
+
+```html
+<!-- 正确：会交给url-loader 或 file-loader -->
+<!-- require让图片和html产生依赖引用关系 -->
+<img src="<%= require('../imgs/1.jpg') %>" alt="">
+
+<!-- 错误：原样输出，不做任何处理 -->
+<img src="../imgs/1.jpg" alt="">
+```
+
+参照上面的目录，分析下，我们开发环境里图片路径，是通过 '../imgs/1.jpg' 来访问的，但是打包到dist文件夹下，其中图片在asset文件夹下，那么需要通过 '../assets/[hash].jpg' 去访问，那么如何去做这一层处理呢？
+
+通过配置webpack.config.js里的file-loader
+
+![](https://github.com/bettermu/blog-picture-store/blob/master/20181103-webpack4-demo/10.png?raw=true)
+
+一开始我只指定了outputPath，那么实际打包之后，文件访问路径为 'assets/[hash].jpg'，实际上就是  path.join(outputPath, name)  ，这里的name是默认命名规则，[hash].[ext]  。不符合预期，那么这就引入了第二个属性： publicPath:
+
+如果指定了publicPath，则路径会变成 path.join(publicPath, name)，这里会忽略掉outputPath，那么这里我们只需要添加  publicPath:'../assets/'  即可
+
+重新运行打包，就能看到效果了
+
+
+
+
+
+
+
+
+
+
+
 
 
 

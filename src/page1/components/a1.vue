@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div>{{head}}</div>
+  <div class="head">{{head}}</div>
   <ab></ab>
 </div>
   
@@ -20,8 +20,11 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="less" scoped>
+  .head {
+    background-color:yellow;
+  }
 </style>
+
 
 
