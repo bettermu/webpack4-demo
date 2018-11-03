@@ -10,6 +10,14 @@
 * 配置 webpack-dev-server
 * 图片正确引入
 
+## 如何使用
+
+* git clone
+* npm install
+* 记得全局安装webpack webpack-cli webpack-dev-server
+* npm run dev (开发环境)
+* npm run build (生产环境打包)
+
 
 ## 安装依赖
 
