@@ -135,7 +135,14 @@ const config = {
     historyApiFallback:true,
     inline:true,
     hot:true,
-    host:'127.0.0.1'
+    host:'127.0.0.1',
+    port:8090,
+    proxy: {
+      '/': {
+          target: 'http://localhost:3000',
+          changeOrigin: true,
+      }
+  }
   }
 
 }

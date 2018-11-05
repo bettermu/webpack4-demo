@@ -237,6 +237,55 @@ npm run dev
 
 ![](https://github.com/bettermu/blog-picture-store/blob/master/20181103-webpack4-demo/4.png?raw=true)
 
+## 配置webpack-dev-server proxy代理 解决请求跨域问题
+
+首先，我们在webpack.config.js里的devServer中配置proxy：
+```js
+
+//起本地服务
+  devServer:{
+    //目录
+    contentBase:"./dist/",
+    historyApiFallback:true,
+    inline:true,
+    hot:true,
+    host:'127.0.0.1',
+    port:8090,
+    proxy: {
+      '/': {
+          target: 'http://localhost:3000',  //请求的目标地址
+          changeOrigin: true,
+      }
+  }
+
+```
+
+发个请求试下：
+
+```js
+//a.js
+$.ajax({
+  type: "get",
+  url: "/search/hot",
+  dataType: "json",
+  success: function (response) {
+    console.log(response)
+  }
+});
+```
+
+如上面代码所示：当我们请求 /search/hot的时候，也就是请求http://localhost:3000/search/hot  
+
+http://localhost:3000/search/hot 接口返回数据如图：   
+
+![](https://github.com/bettermu/blog-picture-store/blob/master/20181103-webpack4-demo/12.png?raw=true)
+
+启动  npm run dev 之后，效果截图如下：   
+
+![](https://github.com/bettermu/blog-picture-store/blob/master/20181103-webpack4-demo/13.png?raw=true)   
+
+可以看到  我们的数据正确请求回来了。
+
 
 
 ## 问题记录

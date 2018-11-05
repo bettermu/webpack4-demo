@@ -13,3 +13,12 @@ require('jquery')
 document.write('aaaaa')
 
 $('.wrap').addClass('hhhh')
+
+$.ajax({
+  type: "get",
+  url: "/search/hot",
+  dataType: "json",
+  success: function (response) {
+    console.log(response)
+  }
+});
