@@ -9,6 +9,7 @@
 * 引入vue
 * 配置 webpack-dev-server
 * 图片正确引入
+* 配置proxy代理 解决跨域问题
 
 ## 如何使用
 
