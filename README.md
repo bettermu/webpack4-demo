@@ -303,7 +303,7 @@ proxy: {
 
 pathRewrite就是路径重写，我们会把请求的路径，/api/search/hot 重写为 /search/hot 那么当我们请求 /api/search/hot的时候，也就是请求 http://localhost:3000/search/hot   
 
-看下效果，数据已经回来了
+看下效果，数据已经回来了   
 
 ![](https://github.com/bettermu/blog-picture-store/blob/master/20181103-webpack4-demo/14.png?raw=true)
 
