@@ -286,6 +286,27 @@ http://localhost:3000/search/hot 接口返回数据如图：
 
 可以看到  我们的数据正确请求回来了。
 
+但是如果我们要统一规范下前端请求的接口，都要加上/api的前缀，也就是上面的请求改成/api/search/hot，但是我们的3000端口的后端，并没有以/api/search/hot，那该怎么办呢？  
+
+我们可以按照下面这样设置：
+
+```js
+proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+    }
+```
+
+pathRewrite就是路径重写，我们会把请求的路径，/api/search/hot 重写为 /search/hot 那么当我们请求 /api/search/hot的时候，也就是请求 http://localhost:3000/search/hot   
+
+看下效果，数据已经回来了
+
+![](https://github.com/bettermu/blog-picture-store/blob/master/20181103-webpack4-demo/14.png?raw=true)
+
 
 
 ## 问题记录

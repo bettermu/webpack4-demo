@@ -16,7 +16,7 @@ $('.wrap').addClass('hhhh')
 
 $.ajax({
   type: "get",
-  url: "/search/hot",
+  url: "/api/search/hot",
   dataType: "json",
   success: function (response) {
     console.log(response)

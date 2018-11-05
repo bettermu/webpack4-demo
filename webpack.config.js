@@ -46,12 +46,11 @@ const config = {
 
   module: {
 
-    rules: [
-      {
-        test:/.vue$/,
-        use:{
-          loader:'vue-loader',
-          options:{}
+    rules: [{
+        test: /.vue$/,
+        use: {
+          loader: 'vue-loader',
+          options: {}
         }
       },
 
@@ -71,14 +70,14 @@ const config = {
           fallback: "style-loader",
           use: ['css-loader', 'less-loader']
         }, )
-      },//带less的css编译
+      }, //带less的css编译
       {
         test: /\.(svg|jpg|jpeg|gif|woff|woff2|eot|ttf|otf)$/,
         use: [{
           loader: 'file-loader',
           options: {
             outputPath: 'assets/',
-            publicPath:'../assets/'
+            publicPath: '../assets/'
           }
         }]
       }, //图片和字体加载
@@ -106,13 +105,13 @@ const config = {
 
       //暴露$和jquery到全局
       {
-        test:require.resolve('jquery'),//require.resolve 用来获取模块的绝对路径
-        use:[{
-          loader:'expose-loader',
-          options:'jQuery'
-        },{
-          loader:'expose-loader',
-          options:'$'
+        test: require.resolve('jquery'), //require.resolve 用来获取模块的绝对路径
+        use: [{
+          loader: 'expose-loader',
+          options: 'jQuery'
+        }, {
+          loader: 'expose-loader',
+          options: '$'
         }]
       }
 
@@ -122,27 +121,29 @@ const config = {
 
   },
 
-  resolve:{
-    alias:{
-      'vue$':'vue/dist/vue.esm.js'
+  resolve: {
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js'
     }
   },
 
   //起本地服务
-  devServer:{
+  devServer: {
     //目录
-    contentBase:"./dist/",
-    historyApiFallback:true,
-    inline:true,
-    hot:true,
-    host:'127.0.0.1',
-    port:8090,
+    contentBase: "./dist/",
+    historyApiFallback: true,
+    inline: true,
+    hot: true,
+    host: '127.0.0.1',
+    port: 8090,
     proxy: {
-      '/': {
-          target: 'http://localhost:3000',
-          changeOrigin: true,
+      '/api': {
+        target: 'http://localhost:3000',
+        pathRewrite: {
+          '^/api': ''
+        }
       }
-  }
+    }
   }
 
 }
